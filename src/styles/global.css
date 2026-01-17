@@ -17,6 +17,8 @@
   --secondary: #5856D6;
   --accent: #FF2D55;
   --purple: #AF52DE;
+  --teal: #5AC8FA;
+  --green: #34C759;
 
   /* Gradients */
   --primary-gradient: linear-gradient(135deg, #007AFF 0%, #5856D6 100%);
@@ -51,7 +53,7 @@
   --card-bg: #ffffff;
   --card-border: rgba(0, 0, 0, 0.06);
   --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
-  --card-hover-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+  --card-hover-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
 
   /* Code Block */
   --code-bg: #1e293b;
@@ -76,7 +78,6 @@
 ==================================== */
 @media (prefers-color-scheme: dark) {
   :root {
-    /* Brand Colors - Adjusted for dark */
     --primary: #0A84FF;
     --primary-dark: #0066CC;
     --primary-light: #5AC8FA;
@@ -84,42 +85,34 @@
     --accent: #FF375F;
     --purple: #BF5AF2;
 
-    /* Gradients */
     --primary-gradient: linear-gradient(135deg, #0A84FF 0%, #5E5CE6 100%);
     --accent-gradient: linear-gradient(135deg, #FF375F 0%, #FF6B6B 100%);
 
-    /* Glow Effects */
     --glow-primary: 0 0 40px rgba(10, 132, 255, 0.4);
     --glow-accent: 0 0 40px rgba(255, 55, 95, 0.4);
 
-    /* Background Colors - DARK */
     --bg-primary: #0a0f1a;
     --bg-secondary: #111827;
     --bg-tertiary: #1e293b;
     --surface: #111827;
     --surface-hover: #1e293b;
 
-    /* Text Colors - DARK */
     --text-primary: #f8fafc;
     --text-secondary: #cbd5e1;
     --text-muted: #94a3b8;
 
-    /* Borders - DARK */
     --border-color: rgba(255, 255, 255, 0.08);
     --border-light: rgba(255, 255, 255, 0.04);
 
-    /* Glass Effect - DARK */
     --glass-bg: rgba(17, 24, 39, 0.85);
     --glass-border: rgba(255, 255, 255, 0.08);
     --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
 
-    /* Cards - DARK */
     --card-bg: #111827;
     --card-border: rgba(255, 255, 255, 0.06);
     --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-    --card-hover-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+    --card-hover-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
 
-    /* Code Block */
     --code-bg: #0f172a;
     --code-text: #e2e8f0;
   }
@@ -151,53 +144,6 @@ body {
   background-color: var(--bg-primary);
   overflow-x: hidden;
   position: relative;
-}
-
-/* ====================================
-   BACKGROUND EFFECTS
-==================================== */
-body::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image:
-    radial-gradient(circle at 20% 20%, rgba(0, 122, 255, 0.03) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(88, 86, 214, 0.03) 0%, transparent 50%),
-    radial-gradient(circle at 40% 60%, rgba(175, 82, 222, 0.02) 0%, transparent 40%);
-  pointer-events: none;
-  z-index: -1;
-}
-
-@media (prefers-color-scheme: dark) {
-  body::before {
-    background-image:
-      radial-gradient(circle at 20% 20%, rgba(10, 132, 255, 0.08) 0%, transparent 50%),
-      radial-gradient(circle at 80% 80%, rgba(94, 92, 230, 0.08) 0%, transparent 50%),
-      radial-gradient(circle at 40% 60%, rgba(191, 90, 242, 0.05) 0%, transparent 40%);
-  }
-}
-
-/* Subtle Dot Pattern */
-body::after {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-image: radial-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px);
-  background-size: 24px 24px;
-  pointer-events: none;
-  z-index: -1;
-}
-
-@media (prefers-color-scheme: dark) {
-  body::after {
-    background-image: radial-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-  }
 }
 
 /* Typography */
@@ -311,14 +257,14 @@ img {
 }
 
 /* ====================================
-   CARDS
+   CARDS - Clean hover (NO translateY)
 ==================================== */
 .glass-card {
   background: var(--card-bg);
   border: 1px solid var(--card-border);
   border-radius: 16px;
   box-shadow: var(--card-shadow);
-  transition: all var(--transition-normal);
+  transition: all 0.3s ease;
   overflow: hidden;
 }
 
@@ -362,31 +308,12 @@ img {
   font-weight: 600;
   font-size: 0.95rem;
   border-radius: 12px;
-  border: 1.5px solid var(--border-color);
+  border: 2px solid var(--border-color);
   transition: all var(--transition-normal);
   cursor: pointer;
 }
 
 .btn-secondary:hover {
-  border-color: var(--primary);
-  color: var(--primary);
-}
-
-.btn-sm {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
-  font-size: 0.875rem;
-  font-weight: 600;
-  border-radius: 8px;
-  border: 1px solid var(--border-color);
-  color: var(--text-primary);
-  background: transparent;
-  transition: all var(--transition-fast);
-}
-
-.btn-sm:hover {
   border-color: var(--primary);
   color: var(--primary);
 }
@@ -431,26 +358,71 @@ img {
 }
 
 /* ====================================
-   SECTION BACKGROUNDS - Alternating
+   SECTION BACKGROUNDS
 ==================================== */
-section:nth-of-type(odd) {
+section {
   position: relative;
+  overflow: hidden;
+}
+
+section:nth-of-type(odd) {
+  background: var(--bg-primary);
 }
 
 section:nth-of-type(even) {
-  position: relative;
   background: var(--bg-secondary);
+}
+
+/* Subtle gradient orbs */
+section::before {
+  content: '';
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.3;
+  pointer-events: none;
+  z-index: 0;
+}
+
+section:nth-of-type(3n+1)::before {
+  background: rgba(0, 122, 255, 0.08);
+  top: -150px;
+  right: -150px;
+}
+
+section:nth-of-type(3n+2)::before {
+  background: rgba(88, 86, 214, 0.08);
+  bottom: -150px;
+  left: -150px;
+}
+
+section:nth-of-type(3n)::before {
+  background: rgba(175, 82, 222, 0.06);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@media (prefers-color-scheme: dark) {
+  section:nth-of-type(3n+1)::before {
+    background: rgba(10, 132, 255, 0.12);
+  }
+
+  section:nth-of-type(3n+2)::before {
+    background: rgba(94, 92, 230, 0.12);
+  }
+
+  section:nth-of-type(3n)::before {
+    background: rgba(191, 90, 242, 0.1);
+  }
 }
 
 /* ====================================
    REVEAL ANIMATION
 ==================================== */
 .reveal-item {
-  opacity: 1;
-  filter: none;
-}
-
-.reveal-item.visible {
   opacity: 1;
   filter: none;
 }
@@ -473,5 +445,10 @@ section:nth-of-type(even) {
 
   .container {
     padding: 0 1rem;
+  }
+
+  section::before {
+    width: 250px;
+    height: 250px;
   }
 }

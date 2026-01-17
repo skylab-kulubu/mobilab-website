@@ -36,14 +36,13 @@ const { data } = Astro.props;
 
 <style>
   .education-section {
-    background: var(--bg-primary);
+    background: var(--bg-secondary);
   }
 
   .education-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 1.5rem;
-    margin-bottom: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 2rem;
   }
 
   .education-card {
@@ -54,47 +53,73 @@ const { data } = Astro.props;
   }
 
   .card-image {
-    height: 180px;
+    height: 200px;
     background-size: cover;
     background-position: center;
-    border-radius: 16px 16px 0 0;
+    border-radius: 20px 20px 0 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-image::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 50%, rgba(0,0,0,0.6) 100%);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .education-card:hover .card-image::after {
+    opacity: 1;
   }
 
   .card-content {
-    padding: 1.25rem;
+    padding: 1.5rem;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
   }
 
   .card-title {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     margin-bottom: 0.5rem;
     color: var(--text-primary);
+    transition: color 0.3s;
+  }
+
+  .education-card:hover .card-title {
+    color: var(--primary);
   }
 
   .card-excerpt {
     color: var(--text-secondary);
     font-size: 0.9rem;
-    line-height: 1.5;
+    line-height: 1.6;
     flex-grow: 1;
-    margin-bottom: 1rem;
+    margin-bottom: 1.25rem;
   }
 
   .read-more {
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
     color: var(--primary);
     font-weight: 600;
-    font-size: 0.875rem;
+    font-size: 0.9rem;
   }
 
   .read-more svg {
-    transition: transform var(--transition-fast);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   }
 
   .education-card:hover .read-more svg {
-    transform: translateX(4px);
+    transform: translateX(6px);
+  }
+
+  @media (max-width: 768px) {
+    .education-grid {
+      grid-template-columns: 1fr;
+    }
   }
 </style>
