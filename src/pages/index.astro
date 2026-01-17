@@ -1,0 +1,29 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import About from '../components/About.astro';
+import Education from '../components/Education.astro';
+import Projects from '../components/Projects.astro';
+import Competitions from '../components/Competitions.astro';
+import Team from '../components/Team.astro';
+import Blog from '../components/Blog.astro';
+import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
+import { getContent } from '../utils/content';
+
+export const prerender = false; 
+
+const content = getContent();
+---
+
+<Layout title={content.meta?.title}>
+  {content.hero && <Hero data={content.hero} />}
+  {content.about && <About data={content.about} />}
+  {content.education && <Education data={content.education} />}
+  {content.projects && <Projects data={content.projects} />}
+  {content.competitions && <Competitions data={content.competitions} />}
+  {content.team && <Team data={content.team} />}
+  <Blog data={content.blog} />
+  <Contact />
+  <Footer />
+</Layout>

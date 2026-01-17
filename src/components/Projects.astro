@@ -1,0 +1,153 @@
+---
+const { data } = Astro.props;
+---
+
+<section id="projects" class="projects-section section-padding">
+  <div class="container">
+    <div class="section-header reveal-item">
+      <span class="section-label">Portföy</span>
+      <h2 class="section-title">{data.sectionTitle}</h2>
+      <p class="section-description">Marketlere yüklediğimiz uygulamalar</p>
+    </div>
+
+    <div class="projects-grid">
+      {data.items.slice(0, 3).map((item) => (
+        <article class="project-card glass-card reveal-item">
+          <div class="project-image" style={`background-image: url('${item.image}');`}></div>
+          <div class="project-content">
+            <span class="project-category">{item.category}</span>
+            <h3 class="project-title">{item.title}</h3>
+            <p class="project-summary">{item.summary}</p>
+            <div class="project-footer">
+              <div class="tech-tags">
+                <span class="tech-tag">Flutter</span>
+                <span class="tech-tag">Dart</span>
+              </div>
+              <a href={`/projects/${item.id}`} class="project-link">
+                Detaylar
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M5 12h14M12 5l7 7-7 7"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+    
+    <div class="center-btn reveal-item">
+      <a href="/projects" class="btn-primary">Tüm Projeleri İncele</a>
+    </div>
+  </div>
+</section>
+
+<style>
+  .projects-section {
+    background: var(--bg-secondary);
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+  }
+
+  .project-card {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .project-image {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 16px 16px 0 0;
+  }
+
+  .project-content {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .project-category {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+  }
+
+  .project-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+  }
+
+  .project-summary {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    flex-grow: 1;
+    margin-bottom: 1rem;
+  }
+
+  .project-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+  }
+
+  .tech-tags {
+    display: flex;
+    gap: 6px;
+  }
+
+  .tech-tag {
+    padding: 4px 8px;
+    background: rgba(0, 122, 255, 0.1);
+    border-radius: 6px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--primary);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .tech-tag {
+      background: rgba(10, 132, 255, 0.15);
+    }
+  }
+
+  .project-link {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: color var(--transition-fast);
+  }
+
+  .project-link:hover {
+    color: var(--primary);
+  }
+
+  .project-link svg {
+    transition: transform var(--transition-fast);
+  }
+
+  .project-link:hover svg {
+    transform: translateX(4px);
+  }
+
+  @media (max-width: 768px) {
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

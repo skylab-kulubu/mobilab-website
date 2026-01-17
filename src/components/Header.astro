@@ -1,0 +1,137 @@
+---
+const { siteTitle } = Astro.props;
+const links = [
+  { href: '/#about', label: 'Hakkımızda' },
+  { href: '/#education', label: 'Eğitimler' },
+  { href: '/#projects', label: 'Projeler' },
+  { href: '/#competitions', label: 'Başarılar' },
+  { href: '/#team', label: 'Ekip' },
+  { href: '/#blog', label: 'Blog' },
+];
+---
+
+<header class="header" id="main-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">
+      <img src="/mobilablogo.svg" alt="Mobilab Logo" width="120" height="32" />
+    </a>
+    
+    <nav class="nav">
+      <ul>
+        {links.map(link => (
+          <li><a href={link.href} class="nav-link">{link.label}</a></li>
+        ))}
+      </ul>
+    </nav>
+    
+    <a href="/#contact" class="btn-contact">İletişim</a>
+  </div>
+</header>
+
+<script>
+  const header = document.getElementById('main-header');
+
+  function handleScroll() {
+    if (window.scrollY > 50) {
+      header?.classList.add('scrolled');
+    } else {
+      header?.classList.remove('scrolled');
+    }
+  }
+
+  window.addEventListener('scroll', handleScroll);
+  handleScroll();
+</script>
+
+<style>
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    transition: all var(--transition-normal);
+  }
+
+  .header.scrolled {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-color);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.05);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .header.scrolled {
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  .header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+  }
+
+  .logo img {
+    height: 32px;
+    width: 120px;
+    min-width: 120px;
+  }
+
+  .nav ul {
+    display: flex;
+    gap: 0.25rem;
+    list-style: none;
+  }
+
+  .nav-link {
+    padding: 0.5rem 0.875rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 0.9rem;
+    border-radius: 8px;
+    transition: all var(--transition-fast);
+  }
+
+  .nav-link:hover {
+    color: var(--primary);
+    background: rgba(0, 122, 255, 0.08);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .nav-link:hover {
+      background: rgba(10, 132, 255, 0.12);
+    }
+  }
+
+  .btn-contact {
+    padding: 0.5rem 1.25rem;
+    background: var(--primary);
+    color: #fff;
+    font-size: 0.875rem;
+    font-weight: 600;
+    border-radius: 8px;
+    transition: all var(--transition-fast);
+  }
+
+  .btn-contact:hover {
+    opacity: 0.9;
+    box-shadow: var(--glow-primary);
+  }
+
+  @media (max-width: 900px) {
+    .header {
+      display: none;
+    }
+  }
+</style>

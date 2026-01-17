@@ -1,0 +1,477 @@
+/* ====================================
+   MOBILAB - PREMIUM DESIGN SYSTEM
+   Light & Dark Theme Support
+==================================== */
+
+/* Google Fonts - Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+/* ====================================
+   LIGHT THEME (Default)
+==================================== */
+:root {
+  /* Brand Colors */
+  --primary: #007AFF;
+  --primary-dark: #0056b3;
+  --primary-light: #4da3ff;
+  --secondary: #5856D6;
+  --accent: #FF2D55;
+  --purple: #AF52DE;
+
+  /* Gradients */
+  --primary-gradient: linear-gradient(135deg, #007AFF 0%, #5856D6 100%);
+  --accent-gradient: linear-gradient(135deg, #FF2D55 0%, #FF6B6B 100%);
+
+  /* Glow Effects */
+  --glow-primary: 0 0 30px rgba(0, 122, 255, 0.3);
+  --glow-accent: 0 0 30px rgba(255, 45, 85, 0.3);
+
+  /* Background Colors - LIGHT */
+  --bg-primary: #ffffff;
+  --bg-secondary: #f8fafc;
+  --bg-tertiary: #f1f5f9;
+  --surface: #ffffff;
+  --surface-hover: #f8fafc;
+
+  /* Text Colors - LIGHT */
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+
+  /* Borders - LIGHT */
+  --border-color: rgba(0, 0, 0, 0.08);
+  --border-light: rgba(0, 0, 0, 0.04);
+
+  /* Glass Effect - LIGHT */
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.6);
+  --glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+
+  /* Cards - LIGHT */
+  --card-bg: #ffffff;
+  --card-border: rgba(0, 0, 0, 0.06);
+  --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  --card-hover-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+
+  /* Code Block */
+  --code-bg: #1e293b;
+  --code-text: #e2e8f0;
+
+  /* Typography */
+  --font-main: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'SF Mono', 'Fira Code', monospace;
+
+  /* Spacing */
+  --section-padding: 6rem;
+  --container-max: 1200px;
+
+  /* Transitions */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+}
+
+/* ====================================
+   DARK THEME
+==================================== */
+@media (prefers-color-scheme: dark) {
+  :root {
+    /* Brand Colors - Adjusted for dark */
+    --primary: #0A84FF;
+    --primary-dark: #0066CC;
+    --primary-light: #5AC8FA;
+    --secondary: #5E5CE6;
+    --accent: #FF375F;
+    --purple: #BF5AF2;
+
+    /* Gradients */
+    --primary-gradient: linear-gradient(135deg, #0A84FF 0%, #5E5CE6 100%);
+    --accent-gradient: linear-gradient(135deg, #FF375F 0%, #FF6B6B 100%);
+
+    /* Glow Effects */
+    --glow-primary: 0 0 40px rgba(10, 132, 255, 0.4);
+    --glow-accent: 0 0 40px rgba(255, 55, 95, 0.4);
+
+    /* Background Colors - DARK */
+    --bg-primary: #0a0f1a;
+    --bg-secondary: #111827;
+    --bg-tertiary: #1e293b;
+    --surface: #111827;
+    --surface-hover: #1e293b;
+
+    /* Text Colors - DARK */
+    --text-primary: #f8fafc;
+    --text-secondary: #cbd5e1;
+    --text-muted: #94a3b8;
+
+    /* Borders - DARK */
+    --border-color: rgba(255, 255, 255, 0.08);
+    --border-light: rgba(255, 255, 255, 0.04);
+
+    /* Glass Effect - DARK */
+    --glass-bg: rgba(17, 24, 39, 0.85);
+    --glass-border: rgba(255, 255, 255, 0.08);
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+
+    /* Cards - DARK */
+    --card-bg: #111827;
+    --card-border: rgba(255, 255, 255, 0.06);
+    --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    --card-hover-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+
+    /* Code Block */
+    --code-bg: #0f172a;
+    --code-text: #e2e8f0;
+  }
+}
+
+/* ====================================
+   RESET & BASE
+==================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: var(--font-main);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100vh;
+  line-height: 1.6;
+  background-color: var(--bg-primary);
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* ====================================
+   BACKGROUND EFFECTS
+==================================== */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(0, 122, 255, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(88, 86, 214, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 40% 60%, rgba(175, 82, 222, 0.02) 0%, transparent 40%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+@media (prefers-color-scheme: dark) {
+  body::before {
+    background-image:
+      radial-gradient(circle at 20% 20%, rgba(10, 132, 255, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 80% 80%, rgba(94, 92, 230, 0.08) 0%, transparent 50%),
+      radial-gradient(circle at 40% 60%, rgba(191, 90, 242, 0.05) 0%, transparent 40%);
+  }
+}
+
+/* Subtle Dot Pattern */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+  background-size: 24px 24px;
+  pointer-events: none;
+  z-index: -1;
+}
+
+@media (prefers-color-scheme: dark) {
+  body::after {
+    background-image: radial-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  }
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  color: var(--text-primary);
+}
+
+h1 {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw, 3rem);
+}
+
+h3 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+h4 {
+  font-size: clamp(1.125rem, 2vw, 1.5rem);
+}
+
+p {
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* ====================================
+   LAYOUT
+==================================== */
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section-padding {
+  padding: var(--section-padding) 0;
+}
+
+/* ====================================
+   SCROLLBAR
+==================================== */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dark);
+}
+
+/* ====================================
+   TEXT UTILITIES
+==================================== */
+.text-gradient {
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-center {
+  text-align: center;
+}
+
+/* ====================================
+   GLASS EFFECT
+==================================== */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--glass-border);
+}
+
+/* ====================================
+   CARDS
+==================================== */
+.glass-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  box-shadow: var(--card-shadow);
+  transition: all var(--transition-normal);
+  overflow: hidden;
+}
+
+.glass-card:hover {
+  box-shadow: var(--card-hover-shadow);
+  border-color: var(--primary);
+}
+
+/* ====================================
+   BUTTONS
+==================================== */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.75rem;
+  background: var(--primary-gradient);
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 12px;
+  border: none;
+  transition: all var(--transition-normal);
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  box-shadow: var(--glow-primary);
+  opacity: 0.9;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.75rem;
+  background: transparent;
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 0.95rem;
+  border-radius: 12px;
+  border: 1.5px solid var(--border-color);
+  transition: all var(--transition-normal);
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.btn-sm {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border-radius: 8px;
+  border: 1px solid var(--border-color);
+  color: var(--text-primary);
+  background: transparent;
+  transition: all var(--transition-fast);
+}
+
+.btn-sm:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+/* ====================================
+   SECTION HEADERS
+==================================== */
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-label {
+  display: inline-block;
+  padding: 0.4rem 1rem;
+  background: rgba(0, 122, 255, 0.1);
+  border-radius: 50px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--primary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  .section-label {
+    background: rgba(10, 132, 255, 0.15);
+  }
+}
+
+.section-title {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  margin-bottom: 0.75rem;
+}
+
+.section-description {
+  color: var(--text-secondary);
+  font-size: 1.05rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ====================================
+   SECTION BACKGROUNDS - Alternating
+==================================== */
+section:nth-of-type(odd) {
+  position: relative;
+}
+
+section:nth-of-type(even) {
+  position: relative;
+  background: var(--bg-secondary);
+}
+
+/* ====================================
+   REVEAL ANIMATION
+==================================== */
+.reveal-item {
+  opacity: 1;
+  filter: none;
+}
+
+.reveal-item.visible {
+  opacity: 1;
+  filter: none;
+}
+
+/* ====================================
+   CENTER BUTTON
+==================================== */
+.center-btn {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+/* ====================================
+   RESPONSIVE
+==================================== */
+@media (max-width: 768px) {
+  :root {
+    --section-padding: 4rem;
+  }
+
+  .container {
+    padding: 0 1rem;
+  }
+}

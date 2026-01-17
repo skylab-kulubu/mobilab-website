@@ -1,0 +1,133 @@
+---
+import { getContent } from '../utils/content';
+const content = getContent();
+const footer = content.footer;
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="/mobilablogo.svg" alt="Mobilab" width="120" />
+        <p class="tagline">{footer?.tagline || "Kodla, geliştir, yayınla."}</p>
+        <p class="address">{footer?.address || "Davutpaşa Kampüsü, İstanbul"}</p>
+      </div>
+      
+      <div class="footer-links">
+        <div class="links-col">
+          <h4>Keşfet</h4>
+          <ul>
+            <li><a href="/#about">Hakkımızda</a></li>
+            <li><a href="/#education">Eğitimler</a></li>
+            <li><a href="/#projects">Projeler</a></li>
+            <li><a href="/#competitions">Başarılar</a></li>
+          </ul>
+        </div>
+        <div class="links-col">
+          <h4>Topluluk</h4>
+          <ul>
+            <li><a href="/#team">Ekibimiz</a></li>
+            <li><a href="/#blog">Blog</a></li>
+            <li><a href="/#contact">İletişim</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>{footer?.text || "© 2026 Mobilab. Tüm hakları saklıdır."}</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--bg-primary);
+    border-top: 1px solid var(--border-color);
+    padding: 3rem 0 1.5rem;
+    margin-top: 0;
+  }
+
+  .footer-top {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 4rem;
+    margin-bottom: 2rem;
+  }
+
+  .footer-brand img {
+    margin-bottom: 1rem;
+  }
+
+  .tagline {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+  }
+
+  .address {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+  }
+
+  .footer-links {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+  .links-col h4 {
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+  }
+
+  .links-col ul {
+    list-style: none;
+  }
+
+  .links-col li {
+    margin-bottom: 0.5rem;
+  }
+
+  .links-col a {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    transition: color var(--transition-fast);
+  }
+
+  .links-col a:hover {
+    color: var(--primary);
+  }
+
+  .footer-bottom {
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+  }
+
+  .footer-bottom p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+
+  @media (max-width: 768px) {
+    .footer-top {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      text-align: center;
+    }
+
+    .footer-links {
+      justify-items: center;
+    }
+
+    .links-col {
+      text-align: center;
+    }
+  }
+</style>

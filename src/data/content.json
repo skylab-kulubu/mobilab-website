@@ -1,0 +1,216 @@
+{
+    "meta": {
+        "brandColor": "#007AFF",
+        "title": "Mobilab | Mobil Uygulama Geliştirme Ekibi",
+        "description": "Flutter ile mobil uygulama geliştiren öğrenci topluluğu. Tasarımdan yayına, her satırda inovasyon."
+    },
+    "hero": {
+        "topTag": "Mobil Uygulama Stüdyosu",
+        "mainTitle": "Geleceği Avucuna Sığdır",
+        "description": "Mobilab, fikirleri kullanıcı deneyimine dönüştüren Flutter odaklı bir geliştirme ekibidir. Tasarımdan yayına, her satırda inovasyon üretiyoruz.",
+        "ctaPrimary": "Projelerimizi İncele",
+        "ctaSecondary": "Bize Katıl",
+        "stats": [
+            {
+                "value": "12+",
+                "label": "Yayınlanan Uygulama"
+            },
+            {
+                "value": "40+",
+                "label": "Aktif Geliştirici"
+            },
+            {
+                "value": "3",
+                "label": "Yarışma Ödülü"
+            },
+            {
+                "value": "100%",
+                "label": "Flutter"
+            }
+        ]
+    },
+    "about": {
+        "title": "Hakkımızda",
+        "subtitle": "Sadece Kod Değil, Deneyim Üretiyoruz",
+        "content": "Mobilab, Yıldız Teknik Üniversitesi SKY LAB Kulübü bünyesinde faaliyet gösteren mobil uygulama geliştirme ekibidir. Kullanıcı deneyimini merkeze alan, performanslı ve ölçeklenebilir mobil uygulamalar geliştiriyoruz. Tasarımcılar ve geliştiriciler olarak tek vücut halinde çalışıyoruz.",
+        "mission": {
+            "title": "Odak Noktalarımız",
+            "items": [
+                "Çapraz Platform Gücü: Flutter ile iOS, Android ve ötesinde yerel performans sağlıyoruz.",
+                "Temiz Kod: Bakımı kolay, test edilebilir ve SOLID prensiplerine uygun mimariler kuruyoruz.",
+                "Kullanıcı Deneyimi: Sadece çalışması yetmez, akıcı olması şart."
+            ]
+        },
+        "codeSnippet": {
+            "filename": "mobilab_app.dart",
+            "code": "class MobilabApp extends StatelessWidget {\n  const MobilabApp({super.key});\n\n  @override\n  Widget build(BuildContext context) {\n    return MaterialApp(\n      title: 'Mobilab',\n      theme: MobilabTheme.dark(),\n      home: const FutureBuilder(\n        future: Innovation.build(),\n        builder: (ctx, snapshot) {\n          if (snapshot.hasData) return const SuccessView();\n          return const CircularProgressIndicator();\n        },\n      ),\n    );\n  }\n}"
+        }
+    },
+    "education": {
+        "sectionTitle": "Eğitim Programları",
+        "description": "Sıfırdan markete uzanan kapsamlı Flutter eğitim yolculuğu.",
+        "items": [
+            {
+                "id": "flutter-bootcamp",
+                "title": "Flutter 2025 Bootcamp",
+                "description": "Dart temellerinden başlayarak ileri seviye widget kullanımı ve uygulama mimarisine uzanan 8 haftalık yoğun eğitim programı.",
+                "fullDescription": "Bu bootcamp, katılımcıları sıfır seviyesinden alarak kendi uygulamalarını markete yükleyebilecek düzeye taşır. Riverpod, Bloc, API entegrasyonları ve Firebase kullanımı eğitime dahildir.",
+                "image": "https://images.unsplash.com/photo-1617042375876-a13e36732a04?q=80&w=1000&auto=format&fit=crop"
+            },
+            {
+                "id": "advanced-dart",
+                "title": "İleri Seviye Dart ve Clean Architecture",
+                "description": "Spagetti koda son! Uygulamalarınızı test edilebilir, modüler ve profesyonel standartlarda geliştirmeyi öğrenin.",
+                "fullDescription": "Dependency Injection, Unit Testing, Integration Testing ve SOLID prensipleri üzerine kurulu kapsamlı eğitim.",
+                "image": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1000&auto=format&fit=crop"
+            },
+            {
+                "id": "ui-ux-mobile",
+                "title": "Mobil UI/UX Tasarım Atölyesi",
+                "description": "Figma'dan Flutter'a: Tasarımları birebir koda dökme sanatı ve animasyon teknikleri.",
+                "fullDescription": "Custom Painter kullanımı, ileri düzey animasyonlar (Rive entegrasyonu) ve mikro etkileşimler.",
+                "image": "https://images.unsplash.com/photo-1586717791821-3f44a5638d48?q=80&w=1000&auto=format&fit=crop"
+            }
+        ]
+    },
+    "projects": {
+        "sectionTitle": "Projelerimiz",
+        "description": "Play Store ve App Store'da yayınlanan uygulamalarımız.",
+        "items": [
+            {
+                "id": "campus-connect",
+                "title": "Campus Connect",
+                "category": "Sosyal Platform",
+                "summary": "Üniversite öğrencileri için etkinlik ve sosyalleşme platformu.",
+                "fullDescription": "Kampüsteki tüm etkinlikleri, kulüp duyurularını ve yemekhane menülerini tek çatı altında toplayan sosyal ağ uygulaması. Anlık bildirimler ve QR bilet sistemi içerir. Flutter ve Firebase ile geliştirildi.",
+                "image": "https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=1000&auto=format&fit=crop"
+            },
+            {
+                "id": "focus-do",
+                "title": "FocusDo",
+                "category": "Verimlilik",
+                "summary": "Pomodoro tekniğiyle entegre görev yönetim uygulaması.",
+                "fullDescription": "Kullanıcıların odaklanma sürelerini takip eden, oyunlaştırılmış görev yönetim uygulaması. Yerel veritabanı (Isar) ve Bloc state management ile geliştirildi.",
+                "image": "https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?q=80&w=1000&auto=format&fit=crop"
+            },
+            {
+                "id": "eco-cycle",
+                "title": "EcoCycle",
+                "category": "Sürdürülebilirlik",
+                "summary": "Geri dönüşüm noktalarını haritalayan ve puan kazandıran uygulama.",
+                "fullDescription": "Google Maps API entegrasyonu ile en yakın geri dönüşüm noktalarını gösteren, atık ayrıştırma rehberi sunan ödüllü proje.",
+                "image": "https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?q=80&w=1000&auto=format&fit=crop"
+            }
+        ]
+    },
+    "competitions": {
+        "sectionTitle": "Başarılarımız",
+        "description": "Yarışmalarda elde ettiğimiz ödüller.",
+        "items": [
+            {
+                "id": "google-solution-2025",
+                "title": "Google Solution Challenge",
+                "event": "Küresel Final",
+                "date": "Haziran 2025",
+                "category": "Sosyal Etki",
+                "status": "İlk 10",
+                "description": "Engelsiz yaşam için geliştirdiğimiz 'VoiceGuide' uygulamasıyla dünya genelinde ilk 10'a girdik.",
+                "image": "https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=80&w=1000&auto=format&fit=crop"
+            },
+            {
+                "id": "hack-istanbul",
+                "title": "HackIstanbul",
+                "event": "Birincilik Ödülü",
+                "date": "Nisan 2025",
+                "category": "Akıllı Şehir",
+                "status": "Şampiyon",
+                "description": "İstanbul'un trafik sorununa yapay zeka destekli mobil sinyalizasyon çözümü sunduk.",
+                "image": "https://images.unsplash.com/photo-1596464716127-f9a8618a8d10?q=80&w=1000&auto=format&fit=crop"
+            }
+        ]
+    },
+    "blog": {
+        "sectionTitle": "Blog",
+        "description": "Mobil geliştirme dünyasından güncel yazılar.",
+        "items": [
+            {
+                "id": "1",
+                "title": "Flutter 3.29 ile Gelen Yenilikler",
+                "date": "15 Ocak 2026",
+                "excerpt": "Impeller motorunun son durumu ve yeni Material 4 widget setlerini inceliyoruz.",
+                "image": "https://images.unsplash.com/photo-1617042375876-a13e36732a04?q=80&w=600&auto=format&fit=crop",
+                "content": "Flutter ekibi hız kesmiyor..."
+            },
+            {
+                "id": "2",
+                "title": "Riverpod mu, Bloc mu?",
+                "date": "10 Ocak 2026",
+                "excerpt": "State management karşılaştırması: Hangi proje için hangisi daha uygun?",
+                "image": "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?q=80&w=600&auto=format&fit=crop",
+                "content": "Karmaşık state yapıları için Bloc mükemmel bir çözüm sunarken..."
+            },
+            {
+                "id": "3",
+                "title": "Mobil Güvenlik Temelleri",
+                "date": "28 Aralık 2025",
+                "excerpt": "API anahtarlarını güvenli saklama yöntemleri ve tersine mühendislikten korunma.",
+                "image": "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?q=80&w=600&auto=format&fit=crop",
+                "content": "Uygulamanızı yayına almadan önce..."
+            }
+        ]
+    },
+    "team": {
+        "sectionTitle": "Ekibimiz",
+        "description": "Mobilab'ı oluşturan insanlar.",
+        "members": [
+            {
+                "name": "Kaan Yıldız",
+                "role": "Ekip Lideri",
+                "abbr": "KY"
+            },
+            {
+                "name": "Zeynep Demir",
+                "role": "Baş Geliştirici",
+                "abbr": "ZD"
+            },
+            {
+                "name": "Arda Tekin",
+                "role": "Tasarım Lideri",
+                "abbr": "AT"
+            }
+        ]
+    },
+    "contact": {
+        "sectionTitle": "İletişime Geçin",
+        "description": "Sorularınız, iş birliği teklifleriniz veya ekibe katılmak için bize ulaşın.",
+        "email": "mobilab@yildiz.edu.tr",
+        "location": "Davutpaşa Kampüsü, İstanbul",
+        "socials": [
+            {
+                "platform": "Instagram",
+                "url": "#",
+                "handle": "@mobilab_ytu"
+            },
+            {
+                "platform": "Twitter",
+                "url": "#",
+                "handle": "@mobilab_ytu"
+            },
+            {
+                "platform": "LinkedIn",
+                "url": "#",
+                "handle": "Mobilab"
+            },
+            {
+                "platform": "GitHub",
+                "url": "#",
+                "handle": "mobilab-ytu"
+            }
+        ]
+    },
+    "footer": {
+        "text": "© 2026 Mobilab. Tüm hakları saklıdır.",
+        "tagline": "Kodla, geliştir, yayınla.",
+        "address": "Davutpaşa Kampüsü, İstanbul"
+    }
+}

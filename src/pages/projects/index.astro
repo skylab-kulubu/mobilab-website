@@ -1,0 +1,73 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getContent } from '../../utils/content';
+
+export const prerender = false;
+
+const content = getContent();
+const projects = content.projects.items;
+---
+
+<Layout title="Tüm Projeler">
+  <section class="section-padding">
+    <div class="container">
+      <div class="page-header">
+        <a href="/" class="back-link">&larr; Ana Sayfa</a>
+        <h1>Tüm Projeler</h1>
+        <p>Geliştirdiğimiz tüm açık kaynak projeler ve ürünler.</p>
+      </div>
+
+      <div class="projects-grid">
+        {projects.map(project => (
+          <a href={`/projects/${project.id}`} class="project-card glass-card">
+            <div class="card-image" style={`background-image: url('${project.image}');`}></div>
+            <div class="card-content">
+              <span class="category">{project.category}</span>
+              <h4>{project.title}</h4>
+              <p>{project.summary}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-header { margin-bottom: 4rem; margin-top: 40px; }
+  .page-header h1 { font-size: 3rem; margin-top: 1rem; }
+  .back-link { text-decoration: none; color: var(--text-secondary); }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 2rem;
+  }
+
+  .project-card {
+    text-decoration: none;
+    color: inherit;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: transform 0.2s;
+  }
+  
+  .project-card:hover { transform: translateY(-5px); }
+
+  .card-image {
+    height: 250px;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .card-content { padding: 1.5rem; }
+  
+  .category { color: var(--brand-color); font-size: 0.8rem; font-weight: 600; text-transform: uppercase; }
+  
+  .card-content h4 { margin: 0.5rem 0; font-size: 1.5rem; }
+  
+  .card-content p { color: var(--text-secondary); }
+</style>

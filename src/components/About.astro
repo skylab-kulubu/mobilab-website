@@ -1,0 +1,171 @@
+---
+const { data } = Astro.props;
+---
+
+<section id="about" class="about-section section-padding">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-content reveal-item">
+        <span class="section-label">Hakkımızda</span>
+        <h2 class="about-title">{data.subtitle}</h2>
+        <p class="about-text">{data.content}</p>
+        
+        <div class="mission-box">
+          <h4 class="mission-title">{data.mission.title}</h4>
+          <ul class="mission-list">
+            {data.mission.items.map((item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      
+      <div class="about-visual reveal-item">
+        <div class="code-window">
+          <div class="window-header">
+            <div class="window-dots">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+            </div>
+            <span class="filename">{data.codeSnippet?.filename}</span>
+          </div>
+          <pre class="code-content"><code>{data.codeSnippet?.code}</code></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-section {
+    background: var(--bg-secondary);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .section-label {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    background: rgba(0, 122, 255, 0.1);
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .section-label {
+      background: rgba(10, 132, 255, 0.15);
+    }
+  }
+
+  .about-title {
+    font-size: clamp(1.75rem, 3vw, 2.25rem);
+    margin-bottom: 1rem;
+  }
+
+  .about-text {
+    color: var(--text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+
+  .mission-box {
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 1.5rem;
+  }
+
+  .mission-title {
+    color: var(--primary);
+    font-size: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .mission-list {
+    list-style: none;
+  }
+
+  .mission-list li {
+    position: relative;
+    padding-left: 1.5rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .mission-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--primary);
+  }
+
+  /* Code Window */
+  .code-window {
+    background: #1e1e2e;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--card-shadow);
+  }
+
+  .window-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background: rgba(0, 0, 0, 0.3);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  .window-dots {
+    display: flex;
+    gap: 8px;
+  }
+
+  .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+  }
+
+  .dot.red { background: #ff5f56; }
+  .dot.yellow { background: #ffbd2e; }
+  .dot.green { background: #27c93f; }
+
+  .filename {
+    font-size: 0.8rem;
+    color: #888;
+    font-family: var(--font-mono);
+  }
+
+  .code-content {
+    padding: 1.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: #cdd6f4;
+    line-height: 1.6;
+    overflow-x: auto;
+    white-space: pre-wrap;
+    margin: 0;
+  }
+
+  @media (max-width: 900px) {
+    .about-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+</style>

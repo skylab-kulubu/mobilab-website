@@ -1,0 +1,40 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getContent } from '../../utils/content';
+export const prerender = false;
+const content = getContent();
+const items = content.education.items;
+---
+
+<Layout title="Tüm Eğitimler">
+  <section class="section-padding">
+    <div class="container">
+      <div class="page-header">
+        <a href="/" class="back-link">&larr; Ana Sayfa</a>
+        <h1>Eğitim Programlarımız</h1>
+      </div>
+      <div class="grid">
+        {items.map(item => (
+          <div class="card glass-card">
+            <div class="img" style={`background-image: url('${item.image}');`}></div>
+            <div class="info">
+               <h4>{item.title}</h4>
+               <p>{item.description}</p>
+               <a href={`/education/${item.id}`} class="btn-sm">Detaylar</a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-header { margin-top: 50px; margin-bottom: 3rem; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; }
+  .card { overflow: hidden; padding: 0; }
+  .img { height: 200px; background-size: cover; }
+  .info { padding: 1.5rem; }
+  .btn-sm { color: var(--brand-color); text-decoration: none; font-weight: 500; display: inline-block; margin-top: 1rem; }
+  .back-link { text-decoration: none; color: var(--text-secondary); }
+</style>

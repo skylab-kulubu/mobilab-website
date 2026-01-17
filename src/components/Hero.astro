@@ -1,0 +1,633 @@
+---
+const { data } = Astro.props;
+---
+
+<section id="hero" class="hero-section">
+  <!-- Background Gradient -->
+  <div class="hero-bg"></div>
+  
+  <div class="container hero-content">
+    <div class="content-left">
+      <span class="hero-badge">
+        <span class="badge-dot"></span>
+        {data.topTag}
+      </span>
+      
+      <h1 class="main-title">
+        <span class="text-gradient">{data.mainTitle.split(' ')[0]}</span>
+        <br/>
+        {data.mainTitle.split(' ').slice(1).join(' ')}
+      </h1>
+      
+      <p class="hero-description">{data.description}</p>
+      
+      <div class="cta-group">
+        <a href="/#projects" class="btn-primary">
+          {data.ctaPrimary}
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>
+        <a href="/#contact" class="btn-secondary">{data.ctaSecondary}</a>
+      </div>
+      
+      <div class="stats-row">
+        {data.stats.map((stat) => (
+          <div class="stat-item">
+            <span class="stat-value">{stat.value}</span>
+            <span class="stat-label">{stat.label}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+    
+    <div class="content-right">
+      <div class="phone-scene">
+        <!-- 3D Phone Container -->
+        <div class="phone-3d" id="phone3d">
+          <div class="phone-frame">
+            <div class="phone-notch"></div>
+            <div class="phone-screen">
+              <!-- App UI Mock -->
+              <div class="app-ui">
+                <div class="app-header-bar">
+                  <div class="status-icons">
+                    <span>9:41</span>
+                  </div>
+                </div>
+                <div class="app-content">
+                  <div class="app-avatar"></div>
+                  <div class="app-title-area">
+                    <div class="skeleton-text w-60"></div>
+                    <div class="skeleton-text w-40"></div>
+                  </div>
+                  <div class="app-card-main">
+                    <div class="card-icon-box">
+                      <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+                        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+                      </svg>
+                    </div>
+                    <div class="card-info">
+                      <div class="skeleton-text w-80"></div>
+                      <div class="skeleton-text w-full"></div>
+                    </div>
+                  </div>
+                  <div class="app-chart">
+                    <div class="chart-bar" style="--h: 45%"></div>
+                    <div class="chart-bar" style="--h: 72%"></div>
+                    <div class="chart-bar" style="--h: 58%"></div>
+                    <div class="chart-bar" style="--h: 88%"></div>
+                    <div class="chart-bar" style="--h: 65%"></div>
+                    <div class="chart-bar" style="--h: 78%"></div>
+                  </div>
+                </div>
+                <div class="app-bottom-nav">
+                  <div class="nav-item active"></div>
+                  <div class="nav-item"></div>
+                  <div class="nav-item"></div>
+                  <div class="nav-item"></div>
+                </div>
+              </div>
+            </div>
+            <!-- Phone Reflection -->
+            <div class="phone-reflection"></div>
+          </div>
+          
+          <!-- Floating Tech Badges - Premium Style -->
+          <div class="tech-float flutter-float">
+            <div class="tech-icon flutter-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M14.314 0L2.3 12 6 15.7 21.684.012h-7.357L14.314 0zm.014 11.072L7.857 17.53l6.47 6.47H21.7l-6.46-6.468 6.46-6.46h-7.386z"/>
+              </svg>
+            </div>
+            <span class="tech-name">Flutter</span>
+          </div>
+          
+          <div class="tech-float dart-float">
+            <div class="tech-icon dart-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M4.105 4.105S9.158 1.58 11.684.316a3.079 3.079 0 011.481-.315c.766.047 1.677.788 1.677.788L24 9.948v9.789h-4.263V24H9.789l-9.684-9.684 4.105-4.105z"/>
+              </svg>
+            </div>
+            <span class="tech-name">Dart</span>
+          </div>
+          
+          <div class="tech-float firebase-float">
+            <div class="tech-icon firebase-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M3.89 15.672L6.255.461A.542.542 0 017.27.288l2.543 4.771zm16.794 3.692l-2.25-14a.54.54 0 00-.919-.295L3.316 19.365l7.856 4.427a1.621 1.621 0 001.588 0zM14.3 7.147l-1.82-3.482a.542.542 0 00-.96 0L3.53 17.984z"/>
+              </svg>
+            </div>
+            <span class="tech-name">Firebase</span>
+          </div>
+        </div>
+        
+        <!-- Glow Effect -->
+        <div class="phone-glow"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // 3D Tilt Effect
+  const phone = document.getElementById('phone3d');
+  
+  if (phone) {
+    document.addEventListener('mousemove', (e) => {
+      const rect = phone.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+      
+      const mouseX = e.clientX - centerX;
+      const mouseY = e.clientY - centerY;
+      
+      const rotateX = (mouseY / window.innerHeight) * -15;
+      const rotateY = (mouseX / window.innerWidth) * 15;
+      
+      phone.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+    
+    document.addEventListener('mouseleave', () => {
+      phone.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+    });
+  }
+</script>
+
+<style>
+  .hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    position: relative;
+    padding: 100px 0 60px;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(0, 122, 255, 0.15), transparent);
+    pointer-events: none;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .hero-bg {
+      background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(10, 132, 255, 0.2), transparent);
+    }
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 10;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  /* Badge */
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.5rem 1rem;
+    background: rgba(0, 122, 255, 0.1);
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .hero-badge {
+      background: rgba(10, 132, 255, 0.15);
+    }
+  }
+
+  .badge-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--primary);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(0, 122, 255, 0.4); }
+    50% { opacity: 0.8; box-shadow: 0 0 0 8px rgba(0, 122, 255, 0); }
+  }
+
+  .main-title {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    letter-spacing: -1px;
+  }
+
+  .hero-description {
+    font-size: 1.125rem;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+    max-width: 480px;
+    line-height: 1.7;
+  }
+
+  .cta-group {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .stats-row {
+    display: flex;
+    gap: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border-color);
+  }
+
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .stat-value {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--primary);
+  }
+
+  .stat-label {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  /* ========== 3D PHONE ========== */
+  .phone-scene {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 550px;
+  }
+
+  .phone-3d {
+    position: relative;
+    transform-style: preserve-3d;
+    transition: transform 0.1s ease-out;
+  }
+
+  .phone-frame {
+    position: relative;
+    width: 280px;
+    height: 580px;
+    background: linear-gradient(145deg, #2a2a2e, #1a1a1e);
+    border-radius: 44px;
+    padding: 8px;
+    box-shadow: 
+      0 50px 100px -20px rgba(0, 0, 0, 0.4),
+      0 0 0 1px rgba(255, 255, 255, 0.1),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  @media (prefers-color-scheme: light) {
+    .phone-frame {
+      background: linear-gradient(145deg, #e8e8ed, #d1d1d6);
+      box-shadow: 
+        0 50px 100px -20px rgba(0, 0, 0, 0.2),
+        0 0 0 1px rgba(0, 0, 0, 0.05),
+        inset 0 1px 0 rgba(255, 255, 255, 0.8);
+    }
+  }
+
+  .phone-notch {
+    position: absolute;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 28px;
+    background: #000;
+    border-radius: 20px;
+    z-index: 10;
+  }
+
+  .phone-screen {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, #0f0f12 0%, #1a1a20 100%);
+    border-radius: 38px;
+    overflow: hidden;
+  }
+
+  @media (prefers-color-scheme: light) {
+    .phone-screen {
+      background: linear-gradient(180deg, #f8f8fa 0%, #ffffff 100%);
+    }
+  }
+
+  .phone-reflection {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 50%;
+    background: linear-gradient(180deg, rgba(255,255,255,0.1) 0%, transparent 100%);
+    border-radius: 38px 38px 0 0;
+    pointer-events: none;
+  }
+
+  /* App UI */
+  .app-ui {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .app-header-bar {
+    padding: 16px 20px 8px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .status-icons {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .status-icons { color: #fff; }
+  }
+
+  .app-content {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .app-avatar {
+    width: 48px;
+    height: 48px;
+    background: var(--primary-gradient);
+    border-radius: 50%;
+  }
+
+  .app-title-area {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .skeleton-text {
+    height: 10px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 5px;
+  }
+
+  @media (prefers-color-scheme: light) {
+    .skeleton-text {
+      background: rgba(0,0,0,0.08);
+    }
+  }
+
+  .w-40 { width: 40%; }
+  .w-60 { width: 60%; }
+  .w-80 { width: 80%; }
+  .w-full { width: 100%; }
+
+  .app-card-main {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 16px;
+    background: linear-gradient(135deg, rgba(0, 122, 255, 0.2) 0%, rgba(88, 86, 214, 0.2) 100%);
+    border-radius: 16px;
+    border: 1px solid rgba(0, 122, 255, 0.2);
+  }
+
+  .card-icon-box {
+    width: 52px;
+    height: 52px;
+    background: var(--primary-gradient);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .card-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .app-chart {
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    gap: 10px;
+    padding: 20px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 16px;
+  }
+
+  @media (prefers-color-scheme: light) {
+    .app-chart {
+      background: rgba(0,0,0,0.03);
+    }
+  }
+
+  .chart-bar {
+    flex: 1;
+    height: var(--h);
+    background: var(--primary-gradient);
+    border-radius: 6px;
+    animation: chartGrow 1.5s ease-out forwards;
+    animation-delay: calc(var(--h) * 0.01s);
+  }
+
+  @keyframes chartGrow {
+    from { height: 0; }
+    to { height: var(--h); }
+  }
+
+  .app-bottom-nav {
+    display: flex;
+    justify-content: space-around;
+    padding: 16px 24px 24px;
+  }
+
+  .nav-item {
+    width: 24px;
+    height: 24px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 8px;
+  }
+
+  @media (prefers-color-scheme: light) {
+    .nav-item {
+      background: rgba(0,0,0,0.08);
+    }
+  }
+
+  .nav-item.active {
+    background: var(--primary);
+  }
+
+  /* ========== FLOATING TECH BADGES ========== */
+  .tech-float {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 18px;
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    animation: floatBadge 4s ease-in-out infinite;
+    z-index: 20;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .tech-float {
+      background: rgba(17, 24, 39, 0.95);
+      border-color: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+  }
+
+  .tech-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .tech-icon svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  .flutter-icon {
+    background: linear-gradient(135deg, #02569B, #0175C2);
+    color: white;
+  }
+
+  .dart-icon {
+    background: linear-gradient(135deg, #0175C2, #00B4AB);
+    color: white;
+  }
+
+  .firebase-icon {
+    background: linear-gradient(135deg, #FFA000, #F57C00);
+    color: white;
+  }
+
+  .tech-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .flutter-float {
+    top: 5%;
+    right: -10%;
+    animation-delay: 0s;
+  }
+
+  .dart-float {
+    bottom: 25%;
+    left: -15%;
+    animation-delay: 1.3s;
+  }
+
+  .firebase-float {
+    top: 40%;
+    right: -20%;
+    animation-delay: 2.6s;
+  }
+
+  @keyframes floatBadge {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-12px) rotate(2deg); }
+  }
+
+  /* Phone Glow */
+  .phone-glow {
+    position: absolute;
+    width: 350px;
+    height: 350px;
+    background: radial-gradient(circle, rgba(0, 122, 255, 0.25) 0%, transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    filter: blur(60px);
+    z-index: -1;
+    animation: glowPulse 4s ease-in-out infinite;
+  }
+
+  @keyframes glowPulse {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+  }
+
+  /* Responsive */
+  @media (max-width: 1100px) {
+    .flutter-float { right: 0; }
+    .dart-float { left: -5%; }
+    .firebase-float { right: -5%; }
+  }
+
+  @media (max-width: 900px) {
+    .hero-content {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+
+    .hero-description {
+      margin: 0 auto 2rem;
+    }
+
+    .cta-group {
+      justify-content: center;
+    }
+
+    .stats-row {
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .content-right {
+      display: none;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero-section {
+      padding: 80px 0 40px;
+    }
+
+    .cta-group {
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .btn-primary, .btn-secondary {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .stats-row {
+      gap: 1.5rem;
+    }
+  }
+</style>
