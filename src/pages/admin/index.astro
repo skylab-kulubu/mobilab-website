@@ -154,7 +154,7 @@ const contentStr = JSON.stringify(content, null, 2);
   }
 
   // Admin Logic
-  const content = JSON.parse(document.getElementById('jsonEditor')?.textContent || '{}');
+  let content = JSON.parse(document.getElementById('jsonEditor')?.textContent || '{}');
   const jsonEditor = document.getElementById('jsonEditor') as HTMLTextAreaElement;
   
   // Tab Switching
