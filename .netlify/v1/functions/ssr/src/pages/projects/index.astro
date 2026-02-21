@@ -1,0 +1,187 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getProjectsData } from "../../utils/keystatic";
+
+export const prerender = false;
+
+const projectsData = await getProjectsData();
+const projects = projectsData.items;
+---
+
+<Layout title="Tüm Projeler">
+  <section class="section-padding">
+    <div class="container">
+      <div class="page-header">
+        <a href="/" class="back-link">&larr; Ana Sayfa</a>
+        <h1>Tüm Projeler</h1>
+        <p>Geliştirdiğimiz tüm açık kaynak projeler ve ürünler.</p>
+      </div>
+
+      <div class="projects-grid">
+        {
+          projects.map((project) => (
+            <a href={`/projects/${project.id}`} class="project-card glass-card">
+              <div
+                class="project-image"
+                style={`background-image: url('${project.image}');`}
+              />
+              <div class="project-content">
+                <span class="project-category">{project.category}</span>
+                <h3 class="project-title">{project.title}</h3>
+                <p class="project-summary">{project.summary}</p>
+                <div class="project-footer">
+                  <div class="tech-tags">
+                    <span class="tech-tag">Flutter</span>
+                    <span class="tech-tag">Dart</span>
+                  </div>
+                  <span class="project-link">
+                    Detaylar
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                    >
+                      <path d="M5 12h14M12 5l7 7-7 7" />
+                    </svg>
+                  </span>
+                </div>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .page-header {
+    margin-bottom: 4rem;
+    margin-top: 100px;
+  }
+  .page-header h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-top: 1rem;
+  }
+  .back-link {
+    text-decoration: none;
+    color: var(--text-secondary);
+    display: inline-block;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+  }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .project-card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .project-image {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 16px 16px 0 0;
+  }
+
+  .project-content {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .project-category {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+  }
+
+  .project-title {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+    transition: color 0.3s;
+  }
+
+  .project-card:hover .project-title {
+    color: var(--primary);
+  }
+
+  .project-summary {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    flex-grow: 1;
+    margin-bottom: 1rem;
+  }
+
+  .project-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-color);
+  }
+
+  .tech-tags {
+    display: flex;
+    gap: 6px;
+  }
+
+  .tech-tag {
+    padding: 4px 8px;
+    background: rgba(0, 122, 255, 0.1);
+    border-radius: 6px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--primary);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    .tech-tag {
+      background: rgba(10, 132, 255, 0.15);
+    }
+  }
+
+  .project-link {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--text-secondary);
+    font-size: 0.875rem;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+
+  .project-card:hover .project-link {
+    color: var(--primary);
+  }
+
+  .project-link svg {
+    transition: transform 0.3s;
+  }
+
+  .project-card:hover .project-link svg {
+    transform: translateX(4px);
+  }
+
+  @media (max-width: 768px) {
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
