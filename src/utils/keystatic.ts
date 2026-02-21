@@ -1,66 +1,72 @@
-import { createReader } from '@keystatic/core/reader';
-import keystaticConfig from '../../keystatic.config';
-
-const reader = createReader(process.cwd(), keystaticConfig);
+import { getCollection, getEntry } from 'astro:content';
 
 export async function getGeneralData() {
-    const data = await reader.singletons.general.read();
-    if (!data) {
-        console.warn('Keystatic: General data not found at src/content/general.json');
-    }
-    return data;
+    const entry = await getEntry('general', 'general');
+    return entry?.data || null;
 }
 
 export async function getEducationData() {
-    const section = await reader.singletons.educationSection.read();
-    const items = await reader.collections.education.all();
+    const general = await getEntry('general', 'general');
+    const section = {
+        sectionTitle: general?.data?.educationSection?.sectionTitle,
+        description: general?.data?.educationSection?.description
+    };
+    const items = await getCollection('education');
     return {
         ...section,
-        items: items.map(item => ({ ...item.entry, id: item.slug })).reverse(),
+        items: items.map(item => ({ ...item.data, id: item.id })).reverse(),
     };
 }
 
 export async function getProjectsData() {
-    const section = await reader.singletons.projectsSection.read();
-    const items = await reader.collections.projects.all();
+    const general = await getEntry('general', 'general');
+    const section = {
+        sectionTitle: general?.data?.projectsSection?.sectionTitle,
+        description: general?.data?.projectsSection?.description
+    };
+    const items = await getCollection('projects');
     return {
         ...section,
-        items: items.map(item => ({ ...item.entry, id: item.slug })).reverse(),
+        items: items.map(item => ({ ...item.data, id: item.id })).reverse(),
     };
 }
 
 export async function getCompetitionsData() {
-    const section = await reader.singletons.competitionsSection.read();
-    const items = await reader.collections.competitions.all();
+    const general = await getEntry('general', 'general');
+    const section = {
+        sectionTitle: general?.data?.competitionsSection?.sectionTitle,
+        description: general?.data?.competitionsSection?.description
+    };
+    const items = await getCollection('competitions');
     return {
         ...section,
-        items: items.map(item => ({ ...item.entry, id: item.slug })).reverse(),
+        items: items.map(item => ({ ...item.data, id: item.id })).reverse(),
     };
 }
 
 export async function getBlogData() {
-    const section = await reader.singletons.blogSection.read();
-    const items = await reader.collections.blog.all();
+    const general = await getEntry('general', 'general');
+    const section = {
+        sectionTitle: general?.data?.blogSection?.sectionTitle,
+        description: general?.data?.blogSection?.description
+    };
+    const items = await getCollection('blog');
     return {
         ...section,
-        items: await Promise.all(items.map(async item => {
-            const { content, ...rest } = item.entry;
-            // Markdoc content needs to be handled if used, but for now we just return the raw entry
-            return {
-                ...rest,
-                id: item.slug,
-                content: typeof content === 'function' ? await content() : content
-            };
-        })),
+        items: items.map(item => ({ ...item.data, id: item.id })).reverse(),
     };
 }
 
 export async function getTeamData() {
-    const section = await reader.singletons.teamSection.read();
-    const members = await reader.collections.team.all();
+    const general = await getEntry('general', 'general');
+    const section = {
+        sectionTitle: general?.data?.teamSection?.sectionTitle,
+        description: general?.data?.teamSection?.description
+    };
+    const members = await getCollection('team');
     return {
         ...section,
-        members: members.map(item => ({ ...item.entry })),
+        members: members.map(item => ({ ...item.data, id: item.id })),
     };
 }
 
