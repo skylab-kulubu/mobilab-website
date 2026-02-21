@@ -1,9 +1,9 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import { getContent } from '../../utils/content';
+import Layout from "../../layouts/Layout.astro";
+import { getEducationData } from "../../utils/keystatic";
 export const prerender = false;
-const content = getContent();
-const items = content.education.items;
+const educationData = await getEducationData();
+const items = educationData.items;
 ---
 
 <Layout title="Tüm Eğitimler">
@@ -13,28 +13,140 @@ const items = content.education.items;
         <a href="/" class="back-link">&larr; Ana Sayfa</a>
         <h1>Eğitim Programlarımız</h1>
       </div>
-      <div class="grid">
-        {items.map(item => (
-          <div class="card glass-card">
-            <div class="img" style={`background-image: url('${item.image}');`}></div>
-            <div class="info">
-               <h4>{item.title}</h4>
-               <p>{item.description}</p>
-               <a href={`/education/${item.id}`} class="btn-sm">Detaylar</a>
-            </div>
-          </div>
-        ))}
+      <div class="education-grid">
+        {
+          items.map((item) => (
+            <a href={`/education/${item.id}`} class="education-card glass-card">
+              <div
+                class="card-image"
+                style={`background-image: url('${item.image}');`}
+              />
+              <div class="card-content">
+                <h4 class="card-title">{item.title}</h4>
+                <p class="card-excerpt">
+                  {item.description.substring(0, 100)}...
+                </p>
+                <span class="read-more">
+                  İncele
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </span>
+              </div>
+            </a>
+          ))
+        }
       </div>
     </div>
   </section>
 </Layout>
 
 <style>
-  .page-header { margin-top: 50px; margin-bottom: 3rem; }
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; }
-  .card { overflow: hidden; padding: 0; }
-  .img { height: 200px; background-size: cover; }
-  .info { padding: 1.5rem; }
-  .btn-sm { color: var(--brand-color); text-decoration: none; font-weight: 500; display: inline-block; margin-top: 1rem; }
-  .back-link { text-decoration: none; color: var(--text-secondary); }
+  .page-header {
+    margin-top: 100px;
+    margin-bottom: 3rem;
+  }
+
+  .back-link {
+    text-decoration: none;
+    color: var(--text-secondary);
+    display: inline-block;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+  }
+
+  .education-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 2rem;
+  }
+
+  .education-card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .card-image {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 20px 20px 0 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-image::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      180deg,
+      transparent 50%,
+      rgba(0, 0, 0, 0.6) 100%
+    );
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  .education-card:hover .card-image::after {
+    opacity: 1;
+  }
+
+  .card-content {
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+
+  .card-title {
+    font-size: 1.15rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+    transition: color 0.3s;
+  }
+
+  .education-card:hover .card-title {
+    color: var(--primary);
+  }
+
+  .card-excerpt {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    line-height: 1.6;
+    flex-grow: 1;
+    margin-bottom: 1.25rem;
+  }
+
+  .read-more {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--primary);
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+
+  .read-more svg {
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+
+  .education-card:hover .read-more svg {
+    transform: translateX(6px);
+  }
+
+  @media (max-width: 768px) {
+    .education-grid {
+      grid-template-columns: 1fr;
+    }
+  }
 </style>

@@ -1,18 +1,18 @@
 ---
-import { getContent } from '../utils/content';
-const content = getContent();
-const footer = content.footer;
+const { data: footer } = Astro.props;
 ---
 
 <footer class="footer">
   <div class="container">
     <div class="footer-top">
       <div class="footer-brand">
-        <img src="/mobilablogo.svg" alt="Mobilab" width="120" />
+        <img src="/mobilablogo.svg" alt="MOBILAB" width="120" />
         <p class="tagline">{footer?.tagline || "Kodla, geliştir, yayınla."}</p>
-        <p class="address">{footer?.address || "Davutpaşa Kampüsü, İstanbul"}</p>
+        <p class="address">
+          {footer?.address || "Davutpaşa Kampüsü, İstanbul"}
+        </p>
       </div>
-      
+
       <div class="footer-links">
         <div class="links-col">
           <h4>Keşfet</h4>
@@ -33,9 +33,9 @@ const footer = content.footer;
         </div>
       </div>
     </div>
-    
+
     <div class="footer-bottom">
-      <p>{footer?.text || "© 2026 Mobilab. Tüm hakları saklıdır."}</p>
+      <p>{footer?.text || "© 2026 MOBILAB. Tüm hakları saklıdır."}</p>
     </div>
   </div>
 </footer>

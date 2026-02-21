@@ -1,17 +1,17 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import { getContent } from '../../utils/content';
+import Layout from "../../layouts/Layout.astro";
+import { getProjectsData } from "../../utils/keystatic";
 
 export const prerender = false;
 
 const { id } = Astro.params;
-const content = getContent();
-const project = content.projects.items.find(p => p.id === id);
+const projectsData = await getProjectsData();
+const project = projectsData.items.find((p) => p.id === id);
 
 if (!project) {
   return new Response(null, {
     status: 404,
-    statusText: 'Not Found'
+    statusText: "Not Found",
   });
 }
 ---
@@ -20,14 +20,18 @@ if (!project) {
   <article class="project-detail section-padding">
     <div class="container">
       <a href="/#projects" class="back-link">&larr; Geri Dön</a>
-      
+
       <div class="header-content animate-fade-in">
         <span class="category">{project.category}</span>
         <h1>{project.title}</h1>
         <p class="summary">{project.summary}</p>
       </div>
 
-      <div class="featured-image glass-card animate-fade-in" style={`background-image: url('${project.image}');`}></div>
+      <div
+        class="featured-image glass-card animate-fade-in"
+        style={`background-image: url('${project.image}');`}
+      >
+      </div>
 
       <div class="content user-content animate-fade-in">
         <p>{project.fullDescription || project.summary}</p>
@@ -41,7 +45,7 @@ if (!project) {
   .project-detail {
     padding-top: 100px;
   }
-  
+
   .back-link {
     display: inline-block;
     margin-bottom: 2rem;
@@ -49,8 +53,10 @@ if (!project) {
     text-decoration: none;
     font-size: 0.9rem;
   }
-  
-  .back-link:hover { color: var(--brand-color); }
+
+  .back-link:hover {
+    color: var(--brand-color);
+  }
 
   .header-content {
     max-width: 800px;
@@ -66,9 +72,16 @@ if (!project) {
     margin-bottom: 0.5rem;
   }
 
-  h1 { font-size: 3rem; margin-bottom: 1rem; }
-  
-  .summary { font-size: 1.2rem; color: var(--text-secondary); line-height: 1.6; }
+  h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .summary {
+    font-size: 1.2rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+  }
 
   .featured-image {
     width: 100%;
@@ -87,7 +100,11 @@ if (!project) {
   }
 
   @media (max-width: 768px) {
-    h1 { font-size: 2rem; }
-    .featured-image { height: 300px; }
+    h1 {
+      font-size: 2rem;
+    }
+    .featured-image {
+      height: 300px;
+    }
   }
 </style>

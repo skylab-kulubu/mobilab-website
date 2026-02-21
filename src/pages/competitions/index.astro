@@ -1,9 +1,9 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import { getContent } from '../../utils/content';
+import Layout from "../../layouts/Layout.astro";
+import { getCompetitionsData } from "../../utils/keystatic";
 
-const content = getContent();
-const competitions = content.competitions;
+const content = await getCompetitionsData();
+const competitions = content;
 ---
 
 <Layout title="Başarılarımız | Mobilab">
@@ -11,29 +11,36 @@ const competitions = content.competitions;
     <div class="container">
       <span class="page-label">Başarılar</span>
       <h1>{competitions?.sectionTitle || "Başarılarımız"}</h1>
-      <p class="page-description">{competitions?.description || "Yarışmalarda elde ettiğimiz ödüller."}</p>
+      <p class="page-description">
+        {competitions?.description || "Yarışmalarda elde ettiğimiz ödüller."}
+      </p>
     </div>
   </section>
 
   <section class="competitions-page section-padding">
     <div class="container">
       <div class="competitions-grid">
-        {competitions?.items?.map((item) => (
-          <div class="competition-card glass-card">
-            <div class="card-image" style={`background-image: url('${item.image}');`}>
-              <div class="status-badge">{item.status}</div>
-            </div>
-            <div class="card-content">
-              <div class="card-meta">
-                <span class="card-date">{item.date}</span>
-                <span class="card-category">{item.category}</span>
+        {
+          competitions?.items?.map((item) => (
+            <div class="competition-card glass-card">
+              <div
+                class="card-image"
+                style={`background-image: url('${item.image}');`}
+              >
+                <div class="status-badge">{item.status}</div>
               </div>
-              <h3 class="card-title">{item.title}</h3>
-              <span class="card-event">{item.event}</span>
-              <p class="card-description">{item.description}</p>
+              <div class="card-content">
+                <div class="card-meta">
+                  <span class="card-date">{item.date}</span>
+                  <span class="card-category">{item.category}</span>
+                </div>
+                <h3 class="card-title">{item.title}</h3>
+                <span class="card-event">{item.event}</span>
+                <p class="card-description">{item.description}</p>
+              </div>
             </div>
-          </div>
-        ))}
+          ))
+        }
       </div>
     </div>
   </section>

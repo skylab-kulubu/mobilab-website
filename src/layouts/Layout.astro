@@ -1,12 +1,13 @@
 ---
-import '../styles/global.css';
-import { getContent } from '../utils/content';
-import Header from '../components/Header.astro';
-import BottomNavbar from '../components/BottomNavbar.astro';
+import "../styles/global.css";
+import { getGeneralData } from "../utils/keystatic";
+import Header from "../components/Header.astro";
+import BottomNavbar from "../components/BottomNavbar.astro";
 
 const { title } = Astro.props;
-const content = getContent();
-const metaDescr = content.meta?.description || "Mobilab - Mobil Uygulama Geliştirme Ekibi";
+const content = await getGeneralData();
+const metaDescr =
+	content?.meta?.description || "MOBILAB - Mobil Uygulama Geliştirme Ekibi";
 ---
 
 <!doctype html>
@@ -15,17 +16,28 @@ const metaDescr = content.meta?.description || "Mobilab - Mobil Uygulama Gelişt
 		<meta charset="UTF-8" />
 		<meta name="description" content={metaDescr} />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta name="theme-color" content="#007AFF" media="(prefers-color-scheme: light)" />
-		<meta name="theme-color" content="#0A84FF" media="(prefers-color-scheme: dark)" />
+		<meta
+			name="theme-color"
+			content="#007AFF"
+			media="(prefers-color-scheme: light)"
+		/>
+		<meta
+			name="theme-color"
+			content="#0A84FF"
+			media="(prefers-color-scheme: dark)"
+		/>
 		<link rel="icon" type="image/svg+xml" href="/mobilabfavicon.svg" />
-		<link rel="preconnect" href="https://fonts.googleapis.com">
-		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
+			rel="stylesheet"
+		/>
 		<meta name="generator" content={Astro.generator} />
-		<title>{title || content.meta?.title}</title>
+		<title>{title || content?.meta?.title}</title>
 	</head>
 	<body>
-		<Header siteTitle={content.meta?.title} />
+		<Header siteTitle={content?.meta?.title} />
 		<main>
 			<slot />
 		</main>
@@ -37,14 +49,14 @@ const metaDescr = content.meta?.description || "Mobilab - Mobil Uygulama Gelişt
 	html {
 		scroll-behavior: smooth;
 	}
-	
+
 	body {
 		min-height: 100vh;
 		display: flex;
 		flex-direction: column;
 		isolation: isolate;
 	}
-	
+
 	main {
 		flex: 1;
 		width: 100%;

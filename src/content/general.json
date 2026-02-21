@@ -1,0 +1,82 @@
+{
+  "meta": {
+    "brandColor": "#007AFF",
+    "title": "MOBILAB | Mobil Uygulama Geliştirme Ekibi",
+    "description": "Flutter ile mobil uygulama geliştiren öğrenci topluluğu. Tasarımdan yayına, her satırda inovasyon."
+  },
+  "hero": {
+    "topTag": "Mobil Uygulama Stüdyosu",
+    "mainTitle": "Geleceği Avucuna Sığdır",
+    "description": "MOBILAB, fikirleri kullanıcı deneyimine dönüştüren Flutter odaklı bir geliştirme ekibidir. Tasarımdan yayına, her satırda inovasyon üretiyoruz.",
+    "ctaPrimary": "Projelerimizi İncele",
+    "ctaSecondary": "Bize Katıl",
+    "stats": [
+      {
+        "value": "40+",
+        "label": "Aktif Geliştirici"
+      },
+      {
+        "value": "100+",
+        "label": "Verilen Eğitim"
+      },
+      {
+        "value": "100%",
+        "label": "Flutter"
+      },
+      {
+        "value": "50+",
+        "label": "Teknik Workshop"
+      }
+    ]
+  },
+  "about": {
+    "title": "Hakkımızda",
+    "subtitle": "Kod Değil, Deneyim Üretiyoruz",
+    "content": "Yıldız Teknik Üniversitesi’nin ilk ve tek mobil uygulama geliştirme ekibi olan MOBILAB, SKY LAB Kulübü bünyesinde faaliyet göstermektedir. Kullanıcı deneyimini merkeze alan, performanslı ve ölçeklenebilir mobil uygulamalar geliştiriyoruz. Tasarımcılar ve geliştiriciler olarak tek vücut halinde çalışıyoruz.",
+    "mission": {
+      "title": "Odak Noktalarımız",
+      "items": [
+        "Çapraz Platform Gücü: Flutter ile iOS, Android ve ötesinde yerel performans sağlıyoruz.",
+        "Temiz Kod: Bakımı kolay, test edilebilir ve SOLID prensiplerine uygun mimariler kuruyoruz.",
+        "Kullanıcı Deneyimi: Sadece çalışması yetmez, akıcı olması şart."
+      ]
+    },
+    "codeSnippet": {
+      "filename": "MOBILAB_page.dart",
+      "code": "MOBILABPage(\n  motto: \"Geleceği Kodluyoruz\",\n  logo: \"MOBILAB.png\",\n  vision: Vision.innovation,\n  mission: Mission.excellence,\n  developers: Team.united(),\n  experience: Experience.premium,\n).ignite();"
+    }
+  },
+  "contact": {
+    "sectionTitle": "İletişime Geçin",
+    "description": "Sorularınız, iş birliği teklifleriniz veya ekibe katılmak için bize ulaşın.",
+    "email": "mobilab@yildiz.edu.tr",
+    "location": "Davutpaşa Kampüsü, İstanbul",
+    "socials": [
+      {
+        "platform": "Instagram",
+        "url": "#",
+        "handle": "@mobilab_ytu"
+      },
+      {
+        "platform": "Twitter",
+        "url": "#",
+        "handle": "@mobilab_ytu"
+      },
+      {
+        "platform": "LinkedIn",
+        "url": "#",
+        "handle": "MOBILAB"
+      },
+      {
+        "platform": "GitHub",
+        "url": "#",
+        "handle": "mobilab-ytu"
+      }
+    ]
+  },
+  "footer": {
+    "text": "© 2026 MOBILAB. Tüm hakları saklıdır.",
+    "tagline": "Kodla, geliştir, yayınla.",
+    "address": "Davutpaşa Kampüsü, İstanbul"
+  }
+}
