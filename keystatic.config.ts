@@ -1,15 +1,10 @@
 import { config, fields, collection, singleton } from '@keystatic/core';
 
 export default config({
-    storage:
-        process.env.NODE_ENV === 'production' && !process.env.IS_LOCAL_KEYSTATIC
-            ? {
-                kind: 'github',
-                repo: 'erselk/Mobilab-Website',
-            }
-            : {
-                kind: 'local',
-            },
+    storage: {
+        kind: 'github',
+        repo: 'erselk/Mobilab-Website',
+    },
     singletons: {
         general: singleton({
             label: 'Genel Ayarlar',
