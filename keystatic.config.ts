@@ -3,7 +3,7 @@ import { config, fields, collection, singleton } from '@keystatic/core';
 export default config({
     storage: {
         kind: 'github',
-        repo: 'skylab-kulubu/mobilab-website',
+        repo: 'erselk/Mobilab-Website',
     },
     singletons: {
         general: singleton({
