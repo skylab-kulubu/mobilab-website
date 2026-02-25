@@ -1,8 +1,8 @@
 {
   "meta": {
-    "brandColor": "#007AFF",
     "title": "MOBILAB | Mobil Uygulama Geliştirme Ekibi",
-    "description": "Flutter ile mobil uygulama geliştiren öğrenci topluluğu. Tasarımdan yayına, her satırda inovasyon."
+    "description": "Flutter ile mobil uygulama geliştiren öğrenci topluluğu. Tasarımdan yayına, her satırda inovasyon.",
+    "brandColor": "#007AFF"
   },
   "hero": {
     "topTag": "Mobil Uygulama Stüdyosu",
@@ -43,7 +43,7 @@
     },
     "codeSnippet": {
       "filename": "MOBILAB_page.dart",
-      "code": "MOBILABPage(\n  motto: \"Geleceği Kodluyoruz\",\n  logo: \"MOBILAB.png\",\n  vision: Vision.innovation,\n  mission: Mission.excellence,\n  developers: Team.united(),\n  experience: Experience.premium,\n).ignite();"
+      "code": "class MyTeam extends StatelessWidget {\n  const MyTeam({super.key});\n  @override\n  Widget build(BuildContext context) {\n    return MaterialApp(\n      title: \"MOBILAB TEAM\",\n      home: MobilabPage(\n        logo: \"assets/mobilab_logo.png\",\n        motto: \"Kod Değil, Deneyim Üretiyoruz\",\n        vision:\n            \"Yıldız Teknik Üniversitesi bünyesinde mobil uygulama geliştirme kültürünü \"\n            \"yaygınlaştıran ve sektöre nitelikli geliştiriciler kazandıran bir merkez olmak.\",\n        mission:\n            \"Teorik bilgiyi pratik projelerle birleştirerek, \"\n            \"üyelerimizin teknik yetkinliklerini artırmak ve iş birliği \"\n            \"temelli üretim ortamı sağlamak.\",\n        foundationYear: 2014,\n        location: \"Istanbul, Türkiye\",\n      ),\n    );\n  }\n}\n"
     }
   },
   "contact": {
